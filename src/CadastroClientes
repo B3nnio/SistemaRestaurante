@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class CadastroClientes implements OperacoesCliente {
+
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+
+    @Override
+    public void cadastrarCliente(Scanner scanner) {
+
+        System.out.println("\n--- CADASTRO DE CLIENTE ---");
+
+        System.out.print("Nome do cliente: ");
+        String nome = scanner.nextLine().trim();
+        //trim é pura estética visual ele tira os espaços desnecessarios no começo e no final
+
+        while (nome.isEmpty()) {
+            System.out.println("O nome ta vazio vamo rever isso ai?.");
+            System.out.print("Digite o nome do cliente: ");
+            nome = scanner.nextLine().trim();
+        }
+
+        System.out.print("Telefone do cliente: ");
+        String telefone = scanner.nextLine().trim();
+
+        while (!telefone.matches("\\d+")) {
+            System.out.println("Pode não, só numeros são aceitos nessa parte.");
+            System.out.print("Telefone do cliente: ");
+            telefone = scanner.nextLine().trim();
+            //esse \\d vai fazer uma varredura e ver se tem apenas digitos e no minimo um numero pra falar q tem alguma coisa la
+        }
+
+        Cliente cliente = new Cliente(nome, telefone);
+
+        clientes.add(cliente);
+
+        System.out.println("Cliente cadastrado com sucesso!");
+    }
+
+    @Override
+    public void listarClientes() {
+
+        System.out.println("\n--- CLIENTES CADASTRADOS ---");
+
+        if (clientes.isEmpty()) {
+            System.out.println("Nenhum cliente cadastrado.");
+            return;
+        }
+
+        for (Cliente cliente : clientes) {
+            System.out.println("----------------------");
+            cliente.exibirCliente();
+        }
+    }
+}
