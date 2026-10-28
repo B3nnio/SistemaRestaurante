@@ -1,0 +1,14 @@
+# Arquivos de configuração do IntelliJ
+.idea/
+*.iml
+
+# Arquivos compilados do Java
+out/
+*.class
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Arquivos com informações sensíveis
+.env
