@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Restaurante {
@@ -23,7 +24,9 @@ public class Restaurante {
             System.out.println("5 - Excluir cliente");
             System.out.println("6 - Fazer pedido");
             System.out.println("7 - Histórico de pedidos");
-            System.out.println("8 - Sair");
+            System.out.println("8 - Alterar pedido");
+            System.out.println("9 - Excluir pedido");
+            System.out.println("10 - Sair");
             System.out.print("Escolha uma opção: ");
 
             try {
@@ -61,6 +64,14 @@ public class Restaurante {
                         break;
 
                     case 8:
+                        cadastroPedidos.alterarPedido(scanner);
+                        break;
+
+                    case 9:
+                        cadastroPedidos.excluirPedido(scanner);
+                        break;
+
+                    case 10:
                         System.out.println("Sistema encerrado.");
                         break;
 
@@ -72,7 +83,7 @@ public class Restaurante {
                 System.out.println("Digite uma opção numérica válida.");
             }
 
-        } while (opcao != 8);
+        } while (opcao != 10);
 
         scanner.close();
         // Encerra o leitor quando o programa termina
